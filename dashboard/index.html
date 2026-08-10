@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Gate AltDesk — Alt Volume Heatmap</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="shell" data-layout="fundingHeatmap" data-project="gate-io-alt-trading-bot">
+    
+<header class="top">
+  <div class="brand"><div class="logo">G</div><div><h1>Gate AltDesk</h1><p>Listing flow · Relative volume · Liquidity gates</p></div></div>
+  <div class="title-block"><h2>Alt Volume Heatmap</h2><div class="sub">Gate.io</div></div>
+  <div class="badge"><span class="dot"></span>PAPER</div>
+</header>
+<section class="kpis"><div class="kpi tone-b"><div class="lbl">Alts Scanned</div><div class="val">186</div><div class="sub">Universe</div></div><div class="kpi tone-a"><div class="lbl">Volume Spikes</div><div class="val">47</div><div class="sub">7d</div></div><div class="kpi tone-c"><div class="lbl">Entries</div><div class="val">29</div><div class="sub">Passed filters</div></div><div class="kpi tone-a"><div class="lbl">Win Rate</div><div class="val">59.0%</div><div class="sub">Closed</div></div><div class="kpi tone-a"><div class="lbl">Net PnL</div><div class="val">+$890</div><div class="sub">Paper</div></div><div class="kpi tone-warn"><div class="lbl">Liquidity Skips</div><div class="val">61</div><div class="sub">Thin books</div></div></section>
+<section class="grid2">
+  <article class="panel" style="--accent:var(--a)" data-shot="pnl">
+    <div class="row"><h3>Cross-Venue Spread Heatmap</h3><span class="pill">8h windows</span></div>
+    <canvas id="heat" height="320"></canvas>
+  </article>
+  <article class="panel" style="--accent:var(--c)">
+    <div class="row"><h3>Captured Edge Equity</h3><span class="pill">30D</span></div>
+    <canvas id="eq" height="320"></canvas>
+    <div class="meta"><span>Positive windows preferred · Basis drift auto-skips</span></div>
+  </article>
+</section>
+<footer class="foot"><span>Harvest carry. Hedge basis.</span><span>Built for Gate.io</span></footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
