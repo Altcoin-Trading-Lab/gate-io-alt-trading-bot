@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    html,body{margin:0;padding:0;background:#07080a;overflow:hidden}
+    canvas{display:block}
+  </style>
+</head>
+<body>
+<canvas id="c" width="1920" height="560"></canvas>
+<script>
+const W = 1920, H = 560;
+const ctx = document.getElementById("c").getContext("2d");
+
+const bg = ctx.createLinearGradient(0, 0, W, H);
+bg.addColorStop(0, "#071410");
+bg.addColorStop(0.42, "#0c0d10");
+bg.addColorStop(1, "#07080a");
+ctx.fillStyle = bg;
+ctx.fillRect(0, 0, W, H);
+
+for (let i = 0; i < 12; i++) {
+  const y = 70 + i * 36;
+  ctx.strokeStyle = i < 6 ? `rgba(23,230,161,${0.06 + i * 0.015})` : `rgba(56,189,248,${0.05 + (11 - i) * 0.012})`;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(1180, y);
+  ctx.lineTo(1860, y);
+  ctx.stroke();
+}
+
+ctx.strokeStyle = "rgba(23,230,161,0.7)";
+ctx.lineWidth = 3;
+ctx.beginPath();
+const pts = [0.18, 0.16, 0.22, 0.20, 0.34, 0.30, 0.48, 0.44, 0.58, 0.62, 0.78, 0.92];
+pts.forEach((p, i) => {
+  const px = 1240 + i * 48;
+  const py = 430 - p * 220;
+  i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+});
+ctx.stroke();
+ctx.strokeStyle = "rgba(248,113,113,0.4)";
+ctx.lineWidth = 2.2;
+ctx.beginPath();
+const weak = [0.18, 0.17, 0.19, 0.18, 0.21, 0.20, 0.23, 0.22, 0.24, 0.23, 0.25, 0.24];
+weak.forEach((p, i) => {
+  const px = 1240 + i * 48;
+  const py = 430 - p * 220;
+  i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+});
+ctx.stroke();
+
+const accent = ctx.createLinearGradient(0, 0, W, 8);
+accent.addColorStop(0, "#17E6A1");
+accent.addColorStop(1, "#38BDF8");
+ctx.fillStyle = accent;
+ctx.fillRect(0, 0, W, 8);
+ctx.fillStyle = "#17E6A1";
+ctx.fillRect(0, H - 8, W, 8);
+
+ctx.fillStyle = "#17E6A1";
+ctx.font = "700 22px ui-sans-serif, system-ui, sans-serif";
+ctx.fillText("GATE.IO  ·  ALT LISTINGS  ·  SPOT EXECUTION", 88, 92);
+
+ctx.fillStyle = "#f8fafc";
+ctx.font = "800 68px ui-sans-serif, system-ui, sans-serif";
+ctx.fillText("Alt Trading Bot", 88, 186);
+
+ctx.fillStyle = "#94a3b8";
+ctx.font = "400 26px ui-sans-serif, system-ui, sans-serif";
+ctx.fillText("Liquidity gate. Tiny-to-tuned clips. Mechanical TP / SL / time.", 88, 240);
+
+const chips = [
+  { t: "BTC/USDT", c: "#17E6A1" },
+  { t: "CCXT live", c: "#38BDF8" },
+  { t: "Risk guardian", c: "#fb923c" },
+  { t: "Listing funnel", c: "#e2e8f0" },
+];
+let x = 88;
+chips.forEach((ch) => {
+  ctx.font = "600 20px ui-sans-serif, system-ui";
+  const w = ctx.measureText(ch.t).width + 44;
+  ctx.fillStyle = "rgba(15,23,42,0.85)";
+  ctx.strokeStyle = ch.c;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.roundRect(x, 292, w, 48, 24);
+  ctx.fill();
+  ctx.stroke();
+  ctx.fillStyle = ch.c;
+  ctx.fillText(ch.t, x + 22, 323);
+  x += w + 16;
+});
+
+ctx.fillStyle = "#64748b";
+ctx.font = "500 18px ui-sans-serif, system-ui";
+ctx.fillText("Raise the liquidity floor  ·  size the ticket  ·  keep the time stop  ·  find your desk", 88, 412);
+</script>
+</body>
+</html>
